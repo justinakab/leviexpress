@@ -1,7 +1,17 @@
-export const Seat = ({ number, isOccupied }) => {
+export const Seat = ({ number, isOccupied, isSelected }) => {
+  let seatClassName = 'seat';
+
+  console.log(seatClassName);
+
+  if (isSelected) {
+    seatClassName = 'seat seat--selected';
+  } else {
+    seatClassName = 'seat';
+  }
+
   return (
     <svg
-      className={isOccupied ? 'seat seat--occupied' : 'seat'}
+      className={isOccupied ? 'seat seat--occupied ' : seatClassName}
       viewBox="0 0 100 100"
       role="button"
     >

@@ -43,6 +43,7 @@ export const HomePage = () => {
           <SeatPicker
             seats={journey.results.seats}
             journeyId={journey.results.journeyId}
+            selectedSeat={journey.results.autoSeat}
           ></SeatPicker>
         </>
       ) : null}
