@@ -40,8 +40,8 @@ export const JourneyPicker = ({ onJourneyChange }) => {
       <>
         <option value={''}>Vyberte</option>
         {dates.map((date) => (
-          <option key={date.dateCs} value={date.dateBasic}>
-            {date.dateBasic}
+          <option key={date.dateBasic} value={date.dateBasic}>
+            {date.dateCs}
           </option>
         ))}
       </>
@@ -53,7 +53,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
       <>
         <option value={''}>Vyberte</option>
         {cities.map((city) => (
-          <option key={city.code} value={city.name}>
+          <option key={city.code} value={city.code}>
             {city.name}
           </option>
         ))}
@@ -62,9 +62,15 @@ export const JourneyPicker = ({ onJourneyChange }) => {
   };
 
   // functions
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(fromCity, toCity, date);
+
+    const response3 = await fetch(
+      `https://apps.kodim.cz/daweb/leviexpress/api/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`,
+    );
+    const data3 = await response3.json();
+    console.log(data3);
+    onJourneyChange(data3);
   };
 
   return (
@@ -107,16 +113,14 @@ export const JourneyPicker = ({ onJourneyChange }) => {
               value={date}
             >
               <DatesOptions dates={dates}></DatesOptions>
-              {/* <option value="">Vyberte</option>
-              <option value="datum01">Datum 01</option>
-              <option value="datum02">Datum 02</option>
-              <option value="datum03">Datum 03</option>
-              <option value="datum04">Datum 04</option>
-              <option value="datum05">Datum 05</option> */}
             </select>
           </label>
           <div className="journey-picker__controls">
-            <button className="btn" type="submit">
+            <button
+              disabled={date === '' || toCity === '' || fromCity === ''}
+              className="btn"
+              type="submit"
+            >
               Vyhledat spoj
             </button>
           </div>
