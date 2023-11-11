@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { JourneyPicker } from '../../components/JourneyPicker';
 import { JourneyDetail } from '../../components/JourneyDetail';
-import { SelectedSeat } from '../../components/SelectedSeat';
+import { SeatPicker } from '../../components/SeatPicker';
 import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
@@ -40,7 +40,10 @@ export const HomePage = () => {
       {journey !== null ? (
         <>
           <JourneyDetail journeys={journey.results}></JourneyDetail>{' '}
-          <SelectedSeat number={journey.results.autoSeat}></SelectedSeat>
+          <SeatPicker
+            seats={journey.results.seats}
+            journeyId={journey.results.journeyId}
+          ></SeatPicker>
         </>
       ) : null}
       <div className="controls container">
