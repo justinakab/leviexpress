@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { App } from './components/App';
 import './global.css';
 import { ReservationPage } from './pages/Reservation';
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'reservation',
+        path: '/reservation/:id',
         element: <ReservationPage></ReservationPage>,
       },
     ],
