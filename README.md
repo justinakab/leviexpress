@@ -35,12 +35,11 @@ LeviExpress is a straightforward web application designed to simplify the train 
 </li>
 </ol>
 
-<h3>Notes:</h3>
-  <ul>
-  <li>LeviExpress is a project that was meant for me to learn communication between components and the usage of react hooks. I am not the author of the design.</p>
 
-</li>
-  <li>The GitHub Pages are not working.
-</li>
+> [!NOTE]
+> <ul>
+> <li>LeviExpress is a project that was meant for me to learn communication between components and the usage of react hooks. I am not the author of the design.</p>
+></li>
+> <li>The GitHub Pages are not working.
+></li>
 
-</ul>
