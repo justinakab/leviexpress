@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom';
 export const HomePage = () => {
   const navigate = useNavigate();
   const [journey, setJourney] = useState(null);
+  const [userSeat, setUserSeat] = useState(null);
 
   const handleJourneyChange = (journeydata) => {
     setJourney(journeydata);
+    setUserSeat(journeydata.results.autoSeat);
   };
 
   const handleBuy = async () => {
@@ -24,7 +26,7 @@ export const HomePage = () => {
         },
         body: JSON.stringify({
           action: 'create',
-          seat: journey.results.autoSeat,
+          seat: userSeat,
           journeyId: journey.results.journeyId,
         }),
       },
@@ -34,6 +36,7 @@ export const HomePage = () => {
     // console.log(data4.results.reservationId);
     navigate(`/reservation/${data4.results.reservationId}`);
   };
+
   return (
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
@@ -41,9 +44,10 @@ export const HomePage = () => {
         <>
           <JourneyDetail journeys={journey.results}></JourneyDetail>{' '}
           <SeatPicker
+            onSeatSelected={setUserSeat}
             seats={journey.results.seats}
             journeyId={journey.results.journeyId}
-            selectedSeat={journey.results.autoSeat}
+            selectedSeat={userSeat}
           ></SeatPicker>
         </>
       ) : null}

@@ -58,6 +58,7 @@ select:focus {
   outline: none;
   box-shadow: 0 0 3px gray;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .btn:hover {

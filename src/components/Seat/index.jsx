@@ -1,4 +1,4 @@
-export const Seat = ({ number, isOccupied, isSelected }) => {
+export const Seat = ({ number, isOccupied, isSelected, onSelect }) => {
   let seatClassName = 'seat';
 
   console.log(seatClassName);
@@ -11,6 +11,7 @@ export const Seat = ({ number, isOccupied, isSelected }) => {
 
   return (
     <svg
+      onClick={() => onSelect(number)}
       className={isOccupied ? 'seat seat--occupied ' : seatClassName}
       viewBox="0 0 100 100"
       role="button"
